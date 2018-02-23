@@ -1,11 +1,13 @@
+import Promise from 'bluebird';
 import { Router } from 'express';
+
+import sequelize from '../config/sequelize';
+import scopify from '../helpers/scopify';
 import Membership from '../models/membership';
 import User from '../models/user';
-import scopify from '../helpers/scopify';
+import paginate from '../middleware/paginate';
 import { needs, needsApprovedIndex, needsApprovedOne } from '../middleware/permissions';
 import verifyUser from '../middleware/verify-user';
-import paginate from '../middleware/paginate';
-import sequelize from '../config/sequelize';
 
 const router = Router(); // eslint-disable-line new-cap
 
